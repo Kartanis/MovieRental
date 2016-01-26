@@ -10,6 +10,7 @@ import org.junit.runners.JUnit4;
 import org.junit.runners.Suite;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.fail;
 
 public class CustomerTest {
 
@@ -52,6 +53,18 @@ public class CustomerTest {
         assertTrue("Matrix price is incorrect", customer.htmlStatement().contains("Panda Kung Fu:1.5"));
 
     }
+
+
+    @Test public void testIncorrectPriceCodeException() {
+        try {
+            Movie m = new Movie("Vaarg", 12);
+            fail("Incorrect price code passed by system");
+        } catch (IllegalArgumentException e) {
+            // Nothing to do, right behaviour
+        }
+    }
+
+
 
 
 }
