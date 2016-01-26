@@ -28,4 +28,8 @@ public class Rental {
         else
             return 1;
     }
+
+    public double getCharge() {
+        return movie.getCharge(getDaysRented());
+    }
 }
