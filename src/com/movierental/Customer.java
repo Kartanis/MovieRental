@@ -26,25 +26,8 @@ public class Customer {
         String result = "Rent for " + getName() + "/n";
 
         while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
 
-            // determine sum for every line
-            switch (each.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.getDaysRented() > 2)
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
-                    break;
-                case Movie.NEW_RELEASES:
-                    thisAmount += each.getDaysRented() * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if(each.getDaysRented() > 3)
-                        thisAmount += (each.getDaysRented() -3 ) * 1.5;
-                    break;
-            }
 
             //add points for active renter
             frequentrenterPoints++;
@@ -52,14 +35,15 @@ public class Customer {
             if (each.getMovie().getPriceCode() == Movie.NEW_RELEASES &&
                     each.getDaysRented() > 1) frequentrenterPoints++;
             // Show results for current rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
 
-            totalAmount += thisAmount;
+            totalAmount += each.getCharge();
         }
 
         result += "Total amount to pay " + String.valueOf(totalAmount) + "\n";
         result += "You have earned " + String.valueOf(frequentrenterPoints) + " points for activities.";
         return result;
     }
+
 }
 
