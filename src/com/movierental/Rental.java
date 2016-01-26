@@ -31,10 +31,23 @@ public class Rental {
                 break;
             case Movie.CHILDRENS:
                 result += 1.5;
-                if(getDaysRented() > 3)
-                    result += (getDaysRented() -3 ) * 1.5;
+                if (getDaysRented() > 3)
+                    result += (getDaysRented() - 3) * 1.5;
                 break;
         }
         return result;
+    }
+
+
+    /* 
+        add points for active renter
+        bonus if rent new release for two days
+    */
+    int getFrequentRenterPoints() {
+        if (getMovie().getPriceCode() == Movie.NEW_RELEASES &&
+                getDaysRented() > 1)
+            return 2;
+        else
+            return 1;
     }
 }
