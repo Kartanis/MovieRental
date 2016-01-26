@@ -6,6 +6,6 @@ public class Programme {
         Customer customer = new Customer("Sergii");
         Rental r1 = new Rental(new Movie("Matrix", Movie.REGULAR), 4);
         customer.addRental(r1);
-        System.out.println(customer.statement());
+        System.out.println(customer.htmlStatement());
     }
 }
