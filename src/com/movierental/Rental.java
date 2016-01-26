@@ -39,7 +39,7 @@ public class Rental {
     }
 
 
-    /* 
+    /*
         add points for active renter
         bonus if rent new release for two days
     */
